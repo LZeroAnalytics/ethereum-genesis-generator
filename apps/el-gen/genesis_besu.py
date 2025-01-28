@@ -19,10 +19,10 @@ if len(sys.argv) > 1:
 with open(testnet_config_path) as stream:
     data = yaml.safe_load(stream)
 
-if int(data['chain_id']) == 1 or int(data['chain_id']) == 11155111 or int(data['chain_id']) == 17000:
+if data['network_name'] != 'kurtosis' and (int(data['chain_id']) == 1 or int(data['chain_id']) == 11155111 or int(data['chain_id']) == 17000):
     isNamedTestnet = True
 
-if int(data['chain_id']) == 1:
+if data['network_name'] != 'kurtosis' and int(data['chain_id']) == 1:
     with open(mainnet_config_path) as m:
         mainnet_json = json.loads(m.read())
     out = mainnet_json
